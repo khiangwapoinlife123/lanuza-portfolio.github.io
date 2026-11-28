@@ -633,14 +633,199 @@ header,#pgtabs,main,nav,.foot{transition:opacity .9s ease .1s,transform .9s ease
 html.loading header,html.loading #pgtabs,html.loading main,html.loading nav,html.loading .foot{opacity:0}
 html.loading main{transform:translateY(14px)}
 @media(prefers-reduced-motion:reduce){#loader,#loader.out{transition-duration:.01s!important}.ld-mark i,.ld-bar b{animation:none!important}.ld-bar b{width:100%}}
+
+/* ===== Personal Information layout (main + side) and slight designs ===== */
+@media(min-width:821px){
+#pinfo .pi-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:18px}
+#pinfo .pi-main,#pinfo .pi-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+#pinfo .pi-main dl{display:grid;grid-template-columns:1fr 1fr;column-gap:34px}
+#pinfo .pd-sec dd{font-size:22px!important;line-height:1.25!important}
+#pinfo .pd-sec dt{font-size:12px!important}
+#pinfo .pd-sec h3{font-size:22px!important;padding-bottom:6px!important}
+#pinfo .pd-sec{padding:10px 22px 4px!important;grid-column:auto!important;grid-row:auto!important}
+#pinfo .pd-sec dl>div{padding-top:4px!important;padding-bottom:4px!important}
+}
+@media(max-width:820px){#pinfo .pi-grid{display:grid;grid-template-columns:1fr;gap:14px}#pinfo .pi-main,#pinfo .pi-side{display:flex;flex-direction:column;gap:14px}}
+#pinfo .pd dt::before{content:"\25C6";font-size:7px;color:var(--gold);opacity:.75;margin-right:8px;vertical-align:middle}
+.bg-deco{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.page{position:relative}
+.page::before{content:"";position:absolute;inset:8px 12px;pointer-events:none;opacity:.4;
+background:linear-gradient(var(--gold),var(--gold)) 0 0/26px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) 0 0/1px 26px no-repeat,
+linear-gradient(var(--gold),var(--gold)) 100% 0/26px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) 100% 0/1px 26px no-repeat,
+linear-gradient(var(--gold),var(--gold)) 0 100%/26px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) 0 100%/1px 26px no-repeat,
+linear-gradient(var(--gold),var(--gold)) 100% 100%/26px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) 100% 100%/1px 26px no-repeat}
+.page:not(#p1) .sub::after{width:170px;height:9px;
+background:radial-gradient(circle,var(--gold) 0 3px,transparent 3.6px) center/9px 9px no-repeat,linear-gradient(90deg,transparent,var(--gold)) left center/68px 1px no-repeat,linear-gradient(90deg,var(--gold),transparent) right center/68px 1px no-repeat}
+@media(prefers-reduced-motion:no-preference){.bg-deco{animation:decoIn 2.4s ease both}@keyframes decoIn{from{opacity:0}to{opacity:1}}}
+
+
+/* page titles moved to the header (top right) */
+.hr{flex-direction:column;align-items:flex-end;gap:1px;text-align:right}
+#stage{font-size:10px;letter-spacing:.2em;line-height:1.2}
+#ptitle{display:none;flex-direction:column;align-items:flex-end;line-height:1.15}
+#ptitle.on{display:flex}
+#ptitle b{font-family:var(--serif);font-weight:600;font-size:19px;color:#f6f0e0;letter-spacing:.01em}
+#ptitle i{font-size:11.5px;color:var(--gold2);opacity:.9;letter-spacing:.02em}
+@media(min-width:821px){
+#pinfo .fit>h2,#pinfo .fit>.sub,#p2 .fit>h2,#p2 .fit>.sub,#p3 .fit>h2,#p3 .fit>.sub{display:none!important}
+header{height:60px!important}
+}
+@media(max-width:820px){#ptitle{display:none!important}}
+
+/* v7: no clipped tags + extra slight designs */
+@media(min-width:821px){.page{padding-top:28px!important;padding-bottom:14px!important}}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55;
+background:
+ radial-gradient(ellipse 38% 30% at 6% 92%,rgba(216,184,120,.08),transparent 70%),
+ radial-gradient(ellipse 34% 28% at 96% 14%,rgba(90,140,255,.09),transparent 70%),
+ radial-gradient(ellipse 30% 26% at 50% 50%,rgba(120,100,255,.05),transparent 70%)}
+.box,.par,.ach>*{background-image:radial-gradient(circle at 100% 0,rgba(216,184,120,.09),transparent 38%),radial-gradient(circle,rgba(216,184,120,.10) 1px,transparent 1.4px);background-size:100% 100%,18px 18px;background-position:0 0,right 10px top 10px;background-repeat:no-repeat,no-repeat}
+.tag::before,.tag::after{content:"\25C6";font-size:7px;opacity:.7;margin:0 7px;vertical-align:2px}
+#ptitle i::before{content:"";display:block;height:1px;width:46px;margin:3px 0 3px auto;background:linear-gradient(90deg,transparent,var(--gold2))}
+
+/* v8: more slight details */
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+background:
+ repeating-radial-gradient(circle at 0 100%,transparent 0 26px,rgba(216,184,120,.07) 26px 27px) 0 100%/320px 320px no-repeat,
+ repeating-radial-gradient(circle at 100% 0,transparent 0 26px,rgba(120,160,255,.08) 26px 27px) 100% 0/300px 300px no-repeat,
+ radial-gradient(circle,rgba(216,184,120,.28) 1px,transparent 1.6px) 0 0/46px 46px,
+ linear-gradient(90deg,transparent,rgba(216,184,120,.10) 50%,transparent) 50% 100%/60% 1px no-repeat}
+@media(min-width:821px){
+main::before,main::after{content:"";position:absolute;top:18%;bottom:18%;width:1px;pointer-events:none;z-index:1;background:linear-gradient(transparent,rgba(216,184,120,.35),transparent)}
+main::before{left:6px}main::after{right:6px}
+.page::before,.page::after{content:"\25C6";position:absolute;z-index:2;font-size:8px;color:rgba(216,184,120,.55);pointer-events:none;top:50%}
+.page::before{left:3px}.page::after{right:3px}
+.box::before,.par::before,.ach>*::before{content:"";position:absolute;left:8px;bottom:8px;width:14px;height:14px;border-left:1px solid rgba(216,184,120,.45);border-bottom:1px solid rgba(216,184,120,.45);border-radius:0 0 0 4px;pointer-events:none}
+.box::after,.par::after,.ach>*::after{content:"";position:absolute;right:8px;bottom:8px;width:14px;height:14px;border-right:1px solid rgba(216,184,120,.45);border-bottom:1px solid rgba(216,184,120,.45);border-radius:0 0 4px 0;pointer-events:none}
+.box,.par,.ach>*{position:relative}
+h3::after{content:"";display:inline-block;width:26px;height:1px;margin-left:10px;vertical-align:middle;background:linear-gradient(90deg,var(--gold2),transparent)}
+header::after{content:"\25C6";position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:8px;color:var(--gold2);opacity:.8}
+.foot::before{content:"\25C6  \25C6  \25C6";display:block;text-align:center;font-size:6px;letter-spacing:10px;color:rgba(216,184,120,.45);margin-bottom:2px}
+}
+
+/* v9: bigger Personal Information text, columns fill the frame */
+@media(min-width:821px){
+#pinfo .pd-sec dl>div{grid-template-columns:172px minmax(0,1fr)!important;gap:12px!important}
+#pinfo .pd-sec dd{font-size:29px!important}
+#pinfo .pd-sec dt{font-size:15px!important}
+#pinfo .pd-sec h3{font-size:28px!important}
+#pinfo .pd-sec dl>div{padding-top:4px!important;padding-bottom:4px!important}
+#pinfo .pi-main>.pd-sec,#pinfo .pi-side>.pd-sec{flex:1 1 auto;display:flex;flex-direction:column}
+#pinfo .pi-main>.pd-sec dl,#pinfo .pi-side>.pd-sec dl{flex:1;align-content:space-around}
+#pinfo .pi-side>.pd-sec dl{display:flex;flex-direction:column;justify-content:space-around}
+}
+
+/* v10: a bit more gold in the background */
+body::before{opacity:.9!important;background:
+ radial-gradient(ellipse 42% 34% at 4% 94%,rgba(216,184,120,.17),transparent 70%),
+ radial-gradient(ellipse 36% 30% at 97% 12%,rgba(216,184,120,.13),transparent 70%),
+ radial-gradient(ellipse 34% 26% at 92% 92%,rgba(216,184,120,.10),transparent 70%),
+ radial-gradient(ellipse 30% 24% at 8% 8%,rgba(216,184,120,.08),transparent 70%),
+ radial-gradient(ellipse 30% 26% at 50% 50%,rgba(120,100,255,.05),transparent 70%),
+ repeating-linear-gradient(135deg,rgba(216,184,120,.025) 0 1px,transparent 1px 38px)!important}
+body::after{opacity:.85!important;background:
+ repeating-radial-gradient(circle at 0 100%,transparent 0 26px,rgba(216,184,120,.16) 26px 27px) 0 100%/360px 360px no-repeat,
+ repeating-radial-gradient(circle at 100% 0,transparent 0 26px,rgba(216,184,120,.14) 26px 27px) 100% 0/340px 340px no-repeat,
+ radial-gradient(circle,rgba(216,184,120,.45) 1px,transparent 1.7px) 0 0/46px 46px,
+ radial-gradient(circle,rgba(240,208,140,.5) 1.4px,transparent 2px) 23px 23px/138px 138px,
+ linear-gradient(90deg,transparent,rgba(216,184,120,.28) 50%,transparent) 50% 100%/60% 1px no-repeat,
+ linear-gradient(90deg,transparent,rgba(216,184,120,.2) 50%,transparent) 50% 0/50% 1px no-repeat!important}
+@media(min-width:821px){
+main::before,main::after{background:linear-gradient(transparent,rgba(216,184,120,.6),transparent)!important}
+.box,.par,.ach>*{border-color:rgba(216,184,120,.28)!important}
+}
+
+/* v11: slightly 3D details */
+body::before,body::after{filter:drop-shadow(0 2px 3px rgba(0,0,0,.55)) drop-shadow(0 -1px 1px rgba(255,226,160,.18))}
+@media(min-width:821px){
+.box,.par,.ach>*{box-shadow:0 10px 22px -8px rgba(0,0,0,.65),0 2px 0 rgba(0,0,0,.35),inset 0 1px 0 rgba(255,226,160,.20),inset 0 -2px 6px rgba(0,0,0,.35)!important}
+.box::before,.par::before,.ach>*::before{border-color:#e8c982!important;filter:drop-shadow(1.5px 1.5px 0 rgba(0,0,0,.6)) drop-shadow(0 0 3px rgba(216,184,120,.55));width:16px;height:16px;border-width:1.5px!important}
+.box::after,.par::after,.ach>*::after{border-color:#e8c982!important;filter:drop-shadow(-1.5px 1.5px 0 rgba(0,0,0,.6)) drop-shadow(0 0 3px rgba(216,184,120,.55));width:16px;height:16px;border-width:1.5px!important}
+.tag{background-image:linear-gradient(180deg,rgba(255,240,200,.38),rgba(255,255,255,0) 55%,rgba(90,60,10,.28))!important;box-shadow:0 4px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,246,214,.75),inset 0 -2px 3px rgba(110,78,20,.5)!important}
+.tag::before,.tag::after{text-shadow:0 1px 1px rgba(255,240,200,.6),0 -1px 1px rgba(90,60,10,.7);opacity:.95}
+h3::after{height:2px!important;box-shadow:0 1px 2px rgba(0,0,0,.6),0 0 6px rgba(216,184,120,.5)}
+.page::before,.page::after{font-size:11px!important;color:#e8c982!important;text-shadow:0 2px 3px rgba(0,0,0,.7),0 0 8px rgba(216,184,120,.7)}
+main::before,main::after{width:2px!important;box-shadow:1px 0 2px rgba(0,0,0,.6),0 0 6px rgba(216,184,120,.35)}
+header::after{font-size:11px!important;text-shadow:0 2px 3px rgba(0,0,0,.7),0 0 8px rgba(216,184,120,.8)}
+.foot::before{text-shadow:0 1px 2px rgba(0,0,0,.7),0 0 5px rgba(216,184,120,.6)}
+#ptitle i::before{height:2px!important;box-shadow:0 1px 2px rgba(0,0,0,.6),0 0 5px rgba(216,184,120,.5)}
+}
+
+/* v12: moving background lines */
+.flow{position:fixed;inset:-60px;z-index:0;pointer-events:none;overflow:hidden;opacity:.9;
+background:repeating-linear-gradient(135deg,transparent 0 37px,rgba(216,184,120,.10) 37px 38px);animation:flowDiag 9s linear infinite}
+.flow-sweep{position:fixed;left:0;right:0;top:0;height:140px;z-index:0;pointer-events:none;
+background:linear-gradient(180deg,transparent,rgba(216,184,120,.07) 45%,rgba(240,208,140,.22) 50%,rgba(216,184,120,.07) 55%,transparent);animation:flowSweep 11s ease-in-out infinite}
+@keyframes flowDiag{to{transform:translate(26.87px,26.87px)}}
+@keyframes flowSweep{0%{transform:translateY(-160px);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(100vh);opacity:0}}
+@keyframes dotDrift{to{background-position:0 100%,100% 0,46px 46px,161px 161px,50% 100%,50% 0}}
+@keyframes railGlow{0%,100%{opacity:.45}50%{opacity:1}}
+@media(prefers-reduced-motion:no-preference){
+body::after{animation:dotDrift 16s linear infinite}
+main::before,main::after{animation:railGlow 4s ease-in-out infinite}
+main::after{animation-delay:2s}
+}
+@media(prefers-reduced-motion:reduce){.flow,.flow-sweep{animation:none}}
+
+/* v12b: dots drift via own layer */
+body::after{animation:none!important;background:
+ repeating-radial-gradient(circle at 0 100%,transparent 0 26px,rgba(216,184,120,.16) 26px 27px) 0 100%/360px 360px no-repeat,
+ repeating-radial-gradient(circle at 100% 0,transparent 0 26px,rgba(216,184,120,.14) 26px 27px) 100% 0/340px 340px no-repeat,
+ linear-gradient(90deg,transparent,rgba(216,184,120,.28) 50%,transparent) 50% 100%/60% 1px no-repeat,
+ linear-gradient(90deg,transparent,rgba(216,184,120,.2) 50%,transparent) 50% 0/50% 1px no-repeat!important}
+.flow-dots{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.85;
+background:radial-gradient(circle,rgba(216,184,120,.45) 1px,transparent 1.7px) 0 0/46px 46px,radial-gradient(circle,rgba(240,208,140,.5) 1.4px,transparent 2px) 23px 23px/138px 138px;animation:dotDrift2 16s linear infinite}
+@keyframes dotDrift2{to{background-position:46px 46px,161px 161px}}
+@media(prefers-reduced-motion:reduce){.flow-dots{animation:none}}
+
+.flow,.flow-sweep{display:none!important}
 </style>
 </head>
 <body>
 <div id="loader" role="status" aria-live="polite" aria-label="Loading portfolio"><div class="ld-mark"><i></i><i></i><i></i></div><div class="ld-name">Jonash Zachary T. Lanuza</div><div class="ld-sub">Portfolio</div><div class="ld-bar"><b></b></div></div>
-<noscript><style>#loader{display:none}html.loading header,html.loading #pgtabs,html.loading main,html.loading nav,html.loading .foot{opacity:1;transform:none}</style></noscript>
-<canvas id="space"></canvas>
+<noscript><style>#loader{display:none}html.loading header,html.loading #pgtabs,html.loading main,html.loading nav,html.loading .foot{opacity:1;transform:none}
+/* more readable text on Personal Information, Achievements, Family & Friends */
+#pinfo,#p2,#p3{--mut:#d6dcef;color:#f4f6fc}
+#pinfo :is(p,li,dt,dd,span,h3,h4,a,small,em,i,b,div),#p2 :is(p,li,span,h3,h4,a,small,em,i,b,div),#p3 :is(p,li,span,h3,h4,a,small,em,i,b,div){text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 1px rgba(0,0,0,.6)}
+#pinfo p,#pinfo li,#p2 p,#p2 li,#p3 p,#p3 li{color:#eef1fa;opacity:1}
+#pinfo .pd dt{color:#e3e8f6;font-weight:700}
+#pinfo .pd-sec h3,#p2 h3,#p2 h4,#p3 h3,#p3 h4{color:#f3d9a0}
+#p2 .ach .q-aw{color:#f0cf8a}
+#pinfo .box,#p2 .box,#p2 .par,#p2 .ach>*,#p3 .box,#p3 .par{background-color:rgba(5,9,24,.78)!important}
 
-<header><span class="brand">Jonash Zachary T. Lanuza</span><div class="hr"><span id="stage">Homepage</span></div><div class="prog"><i id="xp"></i></div></header>
+/* calmer background */
+.flow-dots{opacity:.45!important}
+body::after{opacity:.3!important}
+body::before{opacity:.4!important}
+.bg-deco{opacity:.6}
+
+/* little twinkling sparkles */
+.bgx .tw{opacity:.5;transform-box:fill-box;transform-origin:center}
+@media(prefers-reduced-motion:no-preference){.bgx .tw{animation:bgTw 4.5s ease-in-out infinite}.bgx .t2{animation-delay:1.5s}.bgx .t3{animation-delay:3s}}
+@keyframes bgTw{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:.75;transform:scale(1.1)}}
+
+/* floating + 3D motion for the little designs */
+.flt{transform-box:fill-box;transform-origin:center}
+.ring3d{transform-box:fill-box;transform-origin:center}
+@media(prefers-reduced-motion:no-preference){
+.flt{animation:bgFloat 6s ease-in-out infinite}.f2{animation-delay:-2s}.f3{animation-delay:-4s;animation-duration:7s}
+.ring3d{animation:ring3d 5s ease-in-out infinite}
+.bgx .tw{animation-name:bgTwF}
+}
+@keyframes bgFloat{0%,100%{transform:translateY(-6px)}50%{transform:translateY(6px)}}
+@keyframes ring3d{0%,100%{transform:scaleY(1)}50%{transform:scaleY(2.2)}}
+@keyframes bgTwF{0%,100%{opacity:.25;transform:translateY(-5px) scale(.75) rotateY(0deg)}50%{opacity:.8;transform:translateY(5px) scale(1.1) rotateY(180deg)}}
+</style></noscript>
+<canvas id="space"></canvas>
+<svg class="bg-deco" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g fill="none" stroke="#d8b878" stroke-width="1" vector-effect="non-scaling-stroke"><circle cx="1520" cy="-30" r="200" opacity=".12"/><circle cx="1520" cy="-30" r="290" opacity=".09"/><circle cx="1520" cy="-30" r="380" opacity=".06"/><circle cx="60" cy="960" r="170" opacity=".12"/><circle cx="60" cy="960" r="260" opacity=".09"/><circle cx="60" cy="960" r="350" opacity=".06"/></g>
+  <circle cx="1130" cy="670" r="9" fill="#d8b878" opacity=".12"/><circle cx="1130" cy="670" r="2.6" fill="#fff" opacity=".8"/><circle cx="1190" cy="638" r="9" fill="#d8b878" opacity=".12"/><circle cx="1190" cy="638" r="2.6" fill="#fff" opacity=".8"/><circle cx="1250" cy="620" r="9" fill="#d8b878" opacity=".12"/><circle cx="1250" cy="620" r="2.6" fill="#fff" opacity=".8"/><circle cx="1305" cy="645" r="9" fill="#d8b878" opacity=".12"/><circle cx="1305" cy="645" r="2.6" fill="#fff" opacity=".8"/><circle cx="1350" cy="685" r="9" fill="#d8b878" opacity=".12"/><circle cx="1350" cy="685" r="2.6" fill="#fff" opacity=".8"/><circle cx="1310" cy="730" r="9" fill="#d8b878" opacity=".12"/><circle cx="1310" cy="730" r="2.6" fill="#fff" opacity=".8"/><circle cx="1255" cy="708" r="9" fill="#d8b878" opacity=".12"/><circle cx="1255" cy="708" r="2.6" fill="#fff" opacity=".8"/><circle cx="1385" cy="745" r="9" fill="#d8b878" opacity=".12"/><circle cx="1385" cy="745" r="2.6" fill="#fff" opacity=".8"/><circle cx="1430" cy="790" r="9" fill="#d8b878" opacity=".12"/><circle cx="1430" cy="790" r="2.6" fill="#fff" opacity=".8"/><circle cx="1480" cy="830" r="9" fill="#d8b878" opacity=".12"/><circle cx="1480" cy="830" r="2.6" fill="#fff" opacity=".8"/>
+  <g fill="none" stroke="#d8b878" stroke-width="1" opacity=".3"><polyline points="1130,670 1190,638 1250,620 1305,645 1350,685 1310,730 1255,708 1305,645"/><polyline points="1350,685 1385,745 1430,790 1480,830"/><polyline points="1255,708 1215,760 1180,812 1150,852"/><polyline points="1350,685 1395,660 1440,640"/></g>
+  <circle cx="1215" cy="760" r="9" fill="#d8b878" opacity=".12"/><circle cx="1215" cy="760" r="2.6" fill="#fff" opacity=".8"/><circle cx="1180" cy="812" r="9" fill="#d8b878" opacity=".12"/><circle cx="1180" cy="812" r="2.6" fill="#fff" opacity=".8"/><circle cx="1150" cy="852" r="9" fill="#d8b878" opacity=".12"/><circle cx="1150" cy="852" r="2.6" fill="#fff" opacity=".8"/><circle cx="1395" cy="660" r="9" fill="#d8b878" opacity=".12"/><circle cx="1395" cy="660" r="2.6" fill="#fff" opacity=".8"/><circle cx="1440" cy="640" r="9" fill="#d8b878" opacity=".12"/><circle cx="1440" cy="640" r="2.6" fill="#fff" opacity=".8"/>
+    <text x="1124" y="700" fill="#d8b878" opacity=".35" font-size="13" letter-spacing="6" font-family="Inter,sans-serif">AQUARIUS</text>
+</svg>
+
+<div class="flow" aria-hidden="true"></div><div class="flow-dots" aria-hidden="true"></div><div class="flow-sweep" aria-hidden="true"></div><header><span class="brand">Jonash Zachary T. Lanuza</span><div class="hr"><span id="stage">Homepage</span><div id="ptitle"><b></b><i></i></div></div><div class="prog"><i id="xp"></i></div></header>
 <div id="pgtabs" role="tablist" aria-label="Jump to page"></div>
 
 <main>
@@ -661,54 +846,16 @@ html.loading main{transform:translateY(14px)}
 <section class="page" id="pinfo"><div class="fit">
   <h2>Personal Information</h2><span class="sub">Personal, academic and contact details</span>
   <div class="box pd"><span class="tag">Personal Info</span>
-    <div class="pd-grid">
-      <div class="pd-col">
-        <div class="pd-sec"><h3>Personal Details</h3><dl>
-          <div><dt>Name</dt><dd>Jonash Zachary Tolentino Lanuza</dd></div>
-          <div><dt>Gender</dt><dd>Male</dd></div>
-          <div><dt>Status</dt><dd>Single</dd></div>
-          <div><dt>Occupation</dt><dd>Student</dd></div>
-          <div><dt>Age</dt><dd>18</dd></div>
-          <div><dt>Birthday</dt><dd>February 12, 2008</dd></div>
-          <div><dt>Height</dt><dd>5'5" (165 cm)</dd></div>
-          <div><dt>Weight</dt><dd>147 lbs (67 kg)</dd></div>
-          <div><dt>Blood Type</dt><dd>O+</dd></div>
-          <div><dt>Eye Color</dt><dd>Brown</dd></div>
-          <div><dt>Hair Color</dt><dd>Black</dd></div>
-        </dl></div>
-        <div class="pd-sec"><h3>Interests &amp; Skills</h3><dl>
-          <div><dt>Hobbies</dt><dd>Playing Games, Playing Badminton, Beatboxing</dd></div>
-          <div><dt>Technical Skills</dt><dd>Web Dev, HTML, Java, Python</dd></div>
-          <div><dt>Favorite Foods</dt><dd>Spaghetti, Chicken Adobo</dd></div>
-          <div><dt>Favorite Colors</dt><dd>White Cream, Midnight Purple</dd></div>
-          <div><dt>Favorite Movies</dt><dd>Avengers: Infinity War, Avengers: Endgame, Shang-Chi and the Legend of the Ten Rings</dd></div>
-          <div><dt>Favorite TV Shows</dt><dd>Teen Titans, Ramparts of Ice</dd></div>
-          <div><dt>Favorite Songs</dt><dd>Harvey, Stress Relief, My Own Worst Enemy, Origami</dd></div>
-        </dl></div>
-        
+    <div class="pi-grid">
+      <div class="pi-main">
+        <div class="pd-sec"><h3>Personal Details</h3><dl><div><dt>Name</dt><dd>Jonash Zachary Tolentino Lanuza</dd></div><div><dt>Nickname</dt><dd>Zach, Jonathan</dd></div><div><dt>Gender</dt><dd>Male</dd></div><div><dt>Status</dt><dd>Single</dd></div><div><dt>Occupation</dt><dd>Student</dd></div><div><dt>Age</dt><dd>18</dd></div><div><dt>Birthday</dt><dd>February 12, 2008</dd></div><div><dt>Place of Birth</dt><dd>Roxas, Isabela</dd></div><div><dt>Zodiac Sign</dt><dd>Aquarius</dd></div><div><dt>Number of Siblings</dt><dd>2</dd></div></dl></div>
+        <div class="pd-sec"><h3>Physical &amp; Health</h3><dl><div><dt>Height</dt><dd>5'5" (165 cm)</dd></div><div><dt>Weight</dt><dd>147 lbs (67 kg)</dd></div><div><dt>BMI</dt><dd>24.5</dd></div><div><dt>Blood Type</dt><dd>O+</dd></div><div><dt>Eye Color</dt><dd>Brown</dd></div><div><dt>Hair Color</dt><dd>Black</dd></div><div><dt>Skin Color</dt><dd>Brown</dd></div><div><dt>Foot Size</dt><dd>44 EU</dd></div><div><dt>Allergies</dt><dd>Shrimps</dd></div><div><dt>Medical Conditions</dt><dd>None</dd></div></dl></div>
+        <div class="pd-sec"><h3>Interests &amp; Skills</h3><dl><div><dt>Hobbies</dt><dd>Playing Games, Playing Badminton, Beatboxing</dd></div><div><dt>Technical Skills</dt><dd>Web Dev, HTML, Java, Python</dd></div><div><dt>Favorite Foods</dt><dd>Spaghetti, Chicken Adobo</dd></div><div><dt>Favorite Colors</dt><dd>White Cream, Midnight Purple</dd></div><div><dt>Favorite Movies</dt><dd>Avengers: Infinity War, Avengers: Endgame, Shang-Chi and the Legend of the Ten Rings</dd></div><div><dt>Favorite TV Shows</dt><dd>Teen Titans, Ramparts of Ice</dd></div><div><dt>Favorite Songs</dt><dd>Harvey, Stress Relief, My Own Worst Enemy, Origami</dd></div></dl></div>
       </div>
-      <div class="pd-col">
-        <div class="pd-sec"><h3>Academic Information</h3><dl>
-          <div><dt>Program</dt><dd>Bachelor of Science in Information Technology, Major in Web Development</dd></div>
-          <div><dt>College</dt><dd>College of Information Technology and Computer Science</dd></div>
-          <div><dt>Year Level</dt><dd>1st Year</dd></div>
-          <div><dt>School</dt><dd>University of the Cordilleras</dd></div>
-        </dl></div>
-        <div class="pd-sec"><h3>Contact Information</h3><dl>
-          <div><dt>Address</dt><dd>District 4, San Manuel, Isabela</dd></div>
-          <div><dt>Currently Living</dt><dd>City Camp Central, Baguio City, Benguet</dd></div>
-          <div><dt>Country</dt><dd>Philippines</dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:jonashlanuza1@gmail.com">jonashlanuza1@gmail.com</a><button class="cp" data-copy="jonashlanuza1@gmail.com">Copy</button></dd></div>
-          <div><dt>Phone Number</dt><dd><a href="tel:09280573862">0928 057 3862</a><button class="cp" data-copy="09280573862">Copy</button></dd></div>
-        </dl></div>
-        <div class="pd-sec"><h3>Cultural Background</h3><dl>
-          <div><dt>Nationality</dt><dd>Filipino</dd></div>
-          <div><dt>Ethnicity</dt><dd>Tagalog</dd></div>
-          <div><dt>Race</dt><dd>Asian</dd></div>
-          <div><dt>Religion</dt><dd>Methodist</dd></div>
-          <div><dt>Languages</dt><dd>Tagalog, English</dd></div>
-        </dl></div>
-        
+      <div class="pi-side">
+        <div class="pd-sec"><h3>Academic Information</h3><dl><div><dt>Program</dt><dd>Bachelor of Science in Information Technology, Major in Web Development</dd></div><div><dt>College</dt><dd>College of Information Technology and Computer Science</dd></div><div><dt>Year Level</dt><dd>1st Year</dd></div><div><dt>School</dt><dd>University of the Cordilleras</dd></div></dl></div>
+        <div class="pd-sec"><h3>Contact Information</h3><dl><div><dt>Address</dt><dd>District 4, San Manuel, Isabela</dd></div><div><dt>Currently Living</dt><dd>City Camp Central, Baguio City, Benguet</dd></div><div><dt>Country</dt><dd>Philippines</dd></div><div><dt>Email</dt><dd><a href="mailto:jonashlanuza1@gmail.com">jonashlanuza1@gmail.com</a><button class="cp" data-copy="jonashlanuza1@gmail.com">Copy</button></dd></div><div><dt>Phone Number</dt><dd><a href="tel:09280573862">0928 057 3862</a><button class="cp" data-copy="09280573862">Copy</button></dd></div></dl></div>
+        <div class="pd-sec"><h3>Cultural Background</h3><dl><div><dt>Nationality</dt><dd>Filipino</dd></div><div><dt>Ethnicity</dt><dd>Tagalog</dd></div><div><dt>Race</dt><dd>Asian</dd></div><div><dt>Religion</dt><dd>Methodist</dd></div><div><dt>Languages</dt><dd>Tagalog, English</dd></div></dl></div>
       </div>
     </div>
   </div>
@@ -775,10 +922,11 @@ const names=['Homepage','Personal Information','Achievements','Family and Friend
 const prev=$('#prevBtn'),next=$('#nextBtn');let idx=0;
 $('#dots').innerHTML=names.map((n,i)=>`<i data-d="${i}" title="${n}"></i>`).join('');
 $('#pgtabs').innerHTML=tabs.map((n,i)=>`<button data-d="${i}" title="${names[i]}">${n}</button>`).join('');
+function setTitle(){const pg=pages[idx],b=$('#ptitle');if(!pg||!b)return;const on=['pinfo','p2','p3'].includes(pg.id),h=pg.querySelector('h2'),u=pg.querySelector('.sub');b.classList.toggle('on',on);if(on){b.firstChild.textContent=h.textContent;b.lastChild.textContent=u.textContent}document.body.classList.toggle('tmoved',on)}
 function sync(){prev.disabled=idx<=0;next.disabled=idx>=N-1;
  [...document.querySelectorAll('.dots i')].forEach((d,i)=>d.classList.toggle('on',i===idx));
  [...document.querySelectorAll('#pgtabs button')].forEach((d,i)=>d.classList.toggle('on',i===idx));
- $('#stage').textContent=names[idx];$('#xp').style.width=(N>1?idx/(N-1)*100:0)+'%'}
+ $('#stage').textContent=names[idx];setTitle();$('#xp').style.width=(N>1?idx/(N-1)*100:0)+'%'}
 var ft;function go(i){const n=Math.max(0,Math.min(N-1,i));if(n===idx&&Math.abs(M.scrollLeft-pages[idx].offsetLeft)<2)return;idx=n;sync();clearTimeout(ft);M.style.transition='opacity .17s ease';M.style.opacity='0';ft=setTimeout(()=>{M.scrollLeft=pages[idx].offsetLeft;M.style.transition='opacity .34s ease';M.style.opacity='1'},180)}
 prev.onclick=()=>go(idx-1);next.onclick=()=>go(idx+1);
 $('#dots').onclick=e=>{if(e.target.dataset.d!==undefined)go(+e.target.dataset.d)};
@@ -791,7 +939,7 @@ M.addEventListener('scroll',()=>{if(Math.abs(M.scrollLeft-pages[idx].offsetLeft)
 /* fit every page to the screen */
 function fitCore(){pages.forEach(pg=>{if(!pg.clientWidth||!pg.clientHeight)return;const f=pg.firstElementChild,cs=getComputedStyle(pg),aw=pg.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight),ah=pg.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);let best=null;const all=[];f.style.transform='none';
  (['p1','pinfo','p2','p3'].includes(pg.id)?(pg.id=='p2'?[1100,1180,1240,1320,1480,1640,1800]:[1240,1320,1480,1640,1800]):[1040,1180,1320,1480,1640,1800]).forEach(w0=>{const w=Math.min(w0,aw);f.style.width=w+'px';const h=f.offsetHeight||1,sc=Math.min(1.3,ah/h,aw/w,['p1','pinfo','p2','p3'].includes(pg.id)?1.3:1.12);all.push({s:sc,w});if(!best||sc>best.s+.03)best={s:sc,w}});if(['p1','pinfo','p2','p3'].includes(pg.id)){const mx=Math.max(...all.map(o=>o.s));best=all.filter(o=>o.s>=mx-.04).pop()}
- if((pg.id=='p2'||pg.id=='pinfo'||pg.id=='p1')&&best){let sc=best.s;for(let k=0;k<5;k++){const w=aw/sc;f.style.width=w+'px';const h=f.offsetHeight||1;sc=Math.min(ah/h,1.3)}best={s:sc,w:aw/sc}}
+ if((pg.id=='p2'||pg.id=='pinfo'||pg.id=='p1'||pg.id=='p3')&&best){let sc=best.s;for(let k=0;k<5;k++){const w=aw/sc;f.style.width=w+'px';const h=f.offsetHeight||1;sc=Math.min(ah/h,1.7)}best={s:sc,w:aw/sc}}
  if(!best)best={s:1,w:Math.max(1,aw)};
  f.style.width=best.w+'px';f.style.transform='scale('+Math.max(.4,best.s).toFixed(3)+')'});M.scrollLeft=pages[idx].offsetLeft}
 /* keep the Family and Friends title the same on-screen size as the Personal Information title */
@@ -802,7 +950,7 @@ function syncTitles(){const ref=document.getElementById('pinfo'),t=document.getE
  if(Math.abs((parseFloat(h2.style.fontSize)||0)-a)>.3)h2.style.fontSize=a.toFixed(2)+'px';
  if(Math.abs((parseFloat(sub.style.fontSize)||0)-b)>.3)sub.style.fontSize=b.toFixed(2)+'px';
  f.style.setProperty('--k',k.toFixed(3))}
-function fitAll(){fitCore();syncTitles();fitCore();syncTitles()}
+function fitAll(){fitCore();fitCore()}
 let q=0;const sched=()=>{cancelAnimationFrame(q);q=requestAnimationFrame(fitAll)};
 addEventListener('resize',sched);addEventListener('load',sched);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(sched);
 if(window.ResizeObserver)pages.forEach(pg=>new ResizeObserver(sched).observe(pg.firstElementChild));
@@ -837,15 +985,11 @@ function build(){
  g.lineWidth=Math.max(1,dpr*.8);
  [[0,H,.26],[W,0,.3]].forEach(a=>{for(let k=1;k<=4;k++){g.strokeStyle='rgba(216,184,120,'+(.075-k*.012).toFixed(3)+')';g.beginPath();g.arc(a[0],a[1],Math.min(W,H)*a[2]*k*.62,0,6.283);g.stroke()}});
  const trace=(pts,col)=>{g.strokeStyle=col;g.beginPath();pts.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.stroke();const e=pts[pts.length-1];g.fillStyle=col;g.beginPath();g.arc(e[0],e[1],2.4*dpr,0,6.283);g.fill();g.beginPath();g.arc(e[0],e[1],6*dpr,0,6.283);g.stroke()};
- trace([[W*.02,H*.18],[W*.09,H*.18],[W*.12,H*.22],[W*.12,H*.34]],'rgba(130,170,255,.22)');
- trace([[W*.98,H*.84],[W*.9,H*.84],[W*.87,H*.8],[W*.87,H*.68]],'rgba(130,170,255,.22)');
- trace([[W*.30,H*.985],[W*.36,H*.985],[W*.385,H*.955]],'rgba(216,184,120,.22)');
- trace([[W*.70,H*.015],[W*.64,H*.015],[W*.615,H*.045]],'rgba(216,184,120,.22)');
  /* more details: edge rulers, crosshair marks, hexagon clusters, binary strips */
  g.strokeStyle='rgba(150,185,255,.14)';g.lineWidth=Math.max(1,dpr*.8);
  for(let i=0;i<=40;i++){const y=H*.12+i*H*.019,L=(i%5===0?12:6)*dpr;g.beginPath();g.moveTo(0,y);g.lineTo(L,y);g.stroke();g.beginPath();g.moveTo(W,y+H*.02);g.lineTo(W-L,y+H*.02);g.stroke()}
  for(let i=0;i<=44;i++){const x=W*.2+i*W*.014,L=(i%5===0?10:5)*dpr;g.beginPath();g.moveTo(x,H);g.lineTo(x,H-L);g.stroke()}
- [[.18,.86],[.78,.9],[.93,.45],[.06,.45],[.5,.06]].forEach(q=>{const x=W*q[0],y=H*q[1],a=7*dpr;g.strokeStyle='rgba(216,184,120,.30)';g.beginPath();g.moveTo(x-a,y);g.lineTo(x+a,y);g.moveTo(x,y-a);g.lineTo(x,y+a);g.stroke()});
+ [].forEach(q=>{const x=0,y=0,a=0;g.strokeStyle='rgba(216,184,120,.30)';g.beginPath();g.moveTo(x-a,y);g.lineTo(x+a,y);g.moveTo(x,y-a);g.lineTo(x,y+a);g.stroke()});
  const hexa=(cx0,cy0,r)=>{g.beginPath();for(let k=0;k<6;k++){const a=k*Math.PI/3+Math.PI/6;g[k?'lineTo':'moveTo'](cx0+Math.cos(a)*r,cy0+Math.sin(a)*r)}g.closePath();g.stroke()};
  g.strokeStyle='rgba(130,170,255,.14)';
  [[.30,.10],[.335,.10],[.3175,.13],[.67,.93],[.7025,.93],[.685,.90]].forEach(q=>hexa(W*q[0],H*q[1],H*.022));
@@ -853,32 +997,29 @@ function build(){
  g.fillText('01001010 01001100',W*.015,H*.93);g.fillText('1101 0010 1110',W*.80,H*.06);
  g.restore();
  /* 3D node cloud (world units = px at depth 0) */
- const n=Math.max(34,Math.min(80,Math.round(W*H/(dpr*dpr)/17000)));nodes=[];
+ const n=Math.max(22,Math.min(48,Math.round(W*H/(dpr*dpr)/26000)));nodes=[];
  for(let i=0;i<n;i++){const a=rnd()*6.283,b=rnd()*6.283,sp=(.05+rnd()*.09)*dpr;
   nodes.push({x:(rnd()*2-1)*W*.62,y:(rnd()*2-1)*H*.62,z:(rnd()*2-1)*f*.5,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,vz:Math.sin(b)*sp*.8,r:(1.1+rnd()*1.5)*dpr,gold:rnd()<.14,sx:0,sy:0,s:1,d:0})}
  pulses=[];C.x=P.x*W;C.y=P.y*H;C.trail=[];
  /* extra depth layers: dust, large wireframe solids, floating code tokens */
- dust=[];const nd=Math.round(Math.max(80,Math.min(190,W*H/(dpr*dpr)/7200)));
+ dust=[];const nd=Math.round(Math.max(45,Math.min(100,W*H/(dpr*dpr)/13000)));
  for(let i=0;i<nd;i++)dust.push({x:(rnd()*2-1)*W*.9,y:(rnd()*2-1)*H*.9,z:(rnd()*2-1)*f*.7,r:(.5+rnd()*.9)*dpr,tw:rnd()*6.283,o:{}});
  shapes=[];const kinds=['oct','ico','cube'];
- [[-.62,-.28,.2],[.66,.3,.35],[-.45,.55,-.1],[.5,-.5,.0]].forEach((q,i)=>shapes.push({x:q[0]*W,y:q[1]*H,z:q[2]*f,size:(70+rnd()*60)*dpr,kind:kinds[i%3],a:rnd()*6,b:rnd()*6,c:rnd()*6,va:.08+rnd()*.1,vb:.1+rnd()*.12,o:{}}));
+ [[-.62,-.28,.2],[.66,.3,.35]].forEach((q,i)=>shapes.push({x:q[0]*W,y:q[1]*H,z:q[2]*f,size:(70+rnd()*60)*dpr,kind:kinds[i%3],a:rnd()*6,b:rnd()*6,c:rnd()*6,va:.08+rnd()*.1,vb:.1+rnd()*.12,o:{}}));
  glyphs=[];const tok=['</>','{ }','01','HTML','CSS','JS','PY','=>','&&','<div>','git','API','SQL','404 ✕','+','○','npm','#','</>','+'];
- for(let i=0;i<24;i++)glyphs.push({t:tok[i%tok.length],x:(rnd()*2-1)*W*.55,y:(rnd()*2-1)*H*.55,z:(rnd()*2-1)*f*.45,vy:(-.03-rnd()*.05)*dpr,o:{}});
+ for(let i=0;i<12;i++)glyphs.push({t:tok[i%tok.length],x:(rnd()*2-1)*W*.55,y:(rnd()*2-1)*H*.55,z:(rnd()*2-1)*f*.45,vy:(-.03-rnd()*.05)*dpr,o:{}});
 }
 /* project a world point with the current tilt */
 let cy_=1,sy_=0,cp_=1,sp_=0;
 function proj(o,x,y,z){
  const x1=x*cy_+z*sy_,z1=-x*sy_+z*cy_,y1=y*cp_-z1*sp_,z2=y*sp_+z1*cp_;
  const s=f/(f+z2+f*.35);o.sx=W/2+x1*s;o.sy=H/2+y1*s;o.s=s;o.d=z2;return o}
-const LINK=()=>Math.min(W,H)*.3;
+const LINK=()=>Math.min(W,H)*.25;
 function floor(){
- /* faint perspective floor grid that shifts with the tilt */
- const vx=W/2+T.yaw*W*.5,vy=H*.52+T.pitch*H*.6,lines=14;
- const hg=cx.createLinearGradient(0,vy-H*.06,0,vy+H*.12);hg.addColorStop(0,'rgba(90,130,230,0)');hg.addColorStop(.35,'rgba(90,130,230,.07)');hg.addColorStop(1,'rgba(90,130,230,0)');cx.fillStyle=hg;cx.fillRect(0,vy-H*.06,W,H*.18);
- cx.lineWidth=Math.max(1,dpr*.7);
- for(let i=-lines;i<=lines;i++){const bx=W/2+i*W*.11+T.yaw*W*.25;const al=.045*(1-Math.abs(i)/(lines+1));
-  cx.strokeStyle='rgba(140,175,255,'+al.toFixed(3)+')';cx.beginPath();cx.moveTo(vx,vy);cx.lineTo(bx+(bx-vx)*2,H*1.05);cx.stroke()}
- for(let k=1;k<=9;k++){const t=k/9,y=vy+(H*1.05-vy)*t*t;cx.strokeStyle='rgba(140,175,255,'+(.012+.05*t).toFixed(3)+')';cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+ /* softer perspective floor: fewer lines that wave smoothly */
+ const tt=RM?0:performance.now()/1000;
+ const vx=W/2+T.yaw*W*.5,vy=H*.52+T.pitch*H*.6,lines=9;
+ const hg=cx.createLinearGradient(0,vy-H*.06,0,vy+H*.12);hg.addColorStop(0,'rgba(90,130,230,0)');hg.addColorStop(.35,'rgba(90,130,230,.06)');hg.addColorStop(1,'rgba(90,130,230,0)');cx.fillStyle=hg;cx.fillRect(0,vy-H*.06,W,H*.18);
 }
 const SOL={
  oct:{v:[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],e:[[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[4,3],[3,5],[5,2]]},
@@ -910,7 +1051,7 @@ function cube(x,y,size,al){
 function draw(){
  if(!base||!base.width||!base.height||!cv.width||!cv.height)return;
  cx.globalCompositeOperation='source-over';cx.drawImage(base,0,0);
- floor();
+
  /* dust (far parallax layer) */
  for(const d of dust){proj(d.o,d.x,d.y,d.z);const tw=.55+.45*Math.sin(d.tw);cx.fillStyle='rgba(200,220,255,'+(.12+.38*tw*Math.min(1,d.o.s/1.2)).toFixed(3)+')';cx.fillRect(d.o.sx,d.o.sy,d.r*d.o.s,d.r*d.o.s)}
  for(const S of shapes)solid(S);
@@ -934,9 +1075,9 @@ function draw(){
  /* node-to-node edges (distance measured in 3D) */
  for(let i=0;i<nodes.length;i++){const a=nodes[i];
   for(let j=i+1;j<nodes.length;j++){const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,dz=a.z-b.z,d=Math.sqrt(dx*dx+dy*dy+dz*dz);
-   if(d<L){const k=1-d/L,al=(.04+.2*k)*(depthA(a)+depthA(b))/2;cx.strokeStyle='rgba(130,170,255,'+al.toFixed(3)+')';cx.beginPath();cx.moveTo(a.sx,a.sy);cx.lineTo(b.sx,b.sy);cx.stroke()}}}
+   if(d<L){const k=1-d/L,al=(.04+.2*k)*(depthA(a)+depthA(b))/2;}}}
  /* cursor-to-node links */
- for(const a of nodes){if(a.near>0){cx.strokeStyle='rgba(236,208,150,'+(a.near*.55).toFixed(3)+')';cx.beginPath();cx.moveTo(cxp,cyp);cx.lineTo(a.sx,a.sy);cx.stroke()}}
+ cx.lineWidth=Math.max(1,dpr*.8);for(const a of nodes){if(a.near>0){cx.strokeStyle='rgba(236,208,150,'+(a.near*.55).toFixed(3)+')';cx.beginPath();cx.moveTo(cxp,cyp);cx.lineTo(a.sx,a.sy);cx.stroke()}}
  /* nodes, far to near */
  for(const a of sorted){const al=depthA(a),r=a.r*a.s*(1+a.near*.6);
   cx.fillStyle=(a.gold||a.near>.3)?'rgba(232,204,148,'+(.4+.45*al).toFixed(3)+')':'rgba(170,200,255,'+(.3+.5*al).toFixed(3)+')';
